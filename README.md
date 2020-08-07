@@ -28,13 +28,33 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. What is the DOM?
 
+
+A tree structure of the HTML
+
+
 2. What is an event?
+
+
+An event are "things" that happen to HTML elements.
+
 
 3. What is an event listener?
 
+
+An event listener waits for an event to occur.
+
+
 4. Why would we convert a NodeList into an Array?
 
+
+In order to transfer a ton of data into one single thing.
+
+
 5. What is a component?
+
+
+Components are reusable bits of code that creates elements and appends them to the DOM.
+
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
