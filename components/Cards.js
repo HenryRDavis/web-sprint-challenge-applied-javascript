@@ -21,7 +21,7 @@
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 
-function cards(data){
+function cards(bootstrap, javascript, jquery, node, technology){
     const card = document.createElement('div')
     const headline = document.createElement('div')
     const author = document.createElement('div')
@@ -40,10 +40,30 @@ function cards(data){
     author.classList.add('author')
     container.classList.add('img-container')
 
-    headline.textContent = data.headline
-    span.textContent = data.authorName
+    headline.textContent = bootstrap.headline
+    span.textContent = bootstrap.authorName
     image.textContent = 'Photo'
-    image.href = data.authorPhoto
+    image.src = bootstrap.authorPhoto
+
+    headline.textContent = javascript.headline
+    span.textContent = javascript.authorName
+    image.textContent = 'Photo'
+    image.src = javascript.authorPhoto
+
+    headline.textContent = node.headline
+    span.textContent = node.authorName
+    image.textContent = 'Photo'
+    image.src = node.authorPhoto
+
+    headline.textContent = jquery.headline
+    span.textContent = jquery.authorName
+    image.textContent = 'Photo'
+    image.src = jquery.authorPhoto
+
+    headline.textContent = technology.headline
+    span.textContent = technology.authorName
+    image.textContent = 'Photo'
+    image.src = technology.authorPhoto
 
     card.addEventListener('click', () => {
         headline.classList.toggle('card')
@@ -51,4 +71,4 @@ function cards(data){
 }
 
 const newCard = document.querySelector('.cards-container')
-newCard.appendChild(cards(data))
+newCard.appendChild(cards())

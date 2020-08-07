@@ -13,12 +13,13 @@
 axios.get('https://lambda-times-api.herokuapp.com/topics')
     .then( res => {
         const newTab = res.data.topics
-        console.log(newTab)
         newTab.forEach(data =>{
             const tab = document.createElement('div')
             tab.classList.add('tab')
+            tab.textContent = res.data.topics[0]
+            console.log(tab)
         })
-        // console.log(res)
+        console.log(res)
     })
     .catch(err => {
         console.log('Wrong!', err)
