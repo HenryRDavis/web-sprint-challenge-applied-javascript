@@ -21,13 +21,18 @@
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 
-function cards(bootstrap, javascript, jquery, node, technology){
+function cards(data){
     const card = document.createElement('div')
     const headline = document.createElement('div')
     const author = document.createElement('div')
     const container = document.createElement('div')
     const image = document.createElement('img')
     const span = document.createElement('span')
+
+    headline.textContent = data.headline  
+    image.src = data.authorPhoto
+    span.textContent = data.authorName
+  
 
     card.appendChild(headline)
     card.appendChild(author)
@@ -40,35 +45,28 @@ function cards(bootstrap, javascript, jquery, node, technology){
     author.classList.add('author')
     container.classList.add('img-container')
 
-    headline.textContent = bootstrap.headline
-    span.textContent = bootstrap.authorName
-    image.textContent = 'Photo'
-    image.src = bootstrap.authorPhoto
-
-    headline.textContent = javascript.headline
-    span.textContent = javascript.authorName
-    image.textContent = 'Photo'
-    image.src = javascript.authorPhoto
-
-    headline.textContent = node.headline
-    span.textContent = node.authorName
-    image.textContent = 'Photo'
-    image.src = node.authorPhoto
-
-    headline.textContent = jquery.headline
-    span.textContent = jquery.authorName
-    image.textContent = 'Photo'
-    image.src = jquery.authorPhoto
-
-    headline.textContent = technology.headline
-    span.textContent = technology.authorName
-    image.textContent = 'Photo'
-    image.src = technology.authorPhoto
-
     card.addEventListener('click', () => {
         headline.classList.toggle('card')
     })
+
+    return card
 }
+axios.get('https://lambda-times-api.herokuapp.com/articles')
+    .then(res =>{
+        console.log(res)
+        const paper = res.data.articles
+        const keys = Object.keys(paper)
+        console.log(paper)
+        keys.forEach(data =>{
+            paper[data].forEach(info =>{
+                const newTitle = cards(info)
+                newCard.append(newTitle)
+            })
+        })
+    })
+    .catch(err =>{
+        console.log('Oops', err)
+    })
 
 const newCard = document.querySelector('.cards-container')
-newCard.appendChild(cards())
+newCard.appendChild(cards(data))
